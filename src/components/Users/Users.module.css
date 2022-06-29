@@ -1,0 +1,46 @@
+.item {
+    margin: 5px;
+    padding: 20px;
+    color: greenyellow;
+}
+
+.item img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.row {
+    margin: 10px;
+    display: flex;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.border {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    width: 400px;
+    border-radius: 20px;
+    border: 1px solid white;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.selectedPage {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.pages{
+    font-size: 20px;
+    cursor: pointer;
+}
+
