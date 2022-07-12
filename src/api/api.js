@@ -9,30 +9,24 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-    // auth () {return instance.get(`auth/me`).then(response => response.data)},
-    follow (userId) {return instance.post(`follow/${userId}`).then(response => response.data)},
-    unfollow (userId) {return instance.delete(`follow/${userId}`).then(response => response.data)},
-    getProfile (userId) {
-        console.warn('Obsolete method. Please profileAPI object.');
-        return profileAPI.getProfile(userId);
-    },
-    getUsers (currentPage, pageSize) {
-        return instance.get(`users/?page=${currentPage}&count=${pageSize}`).then(response => response.data)
-    }
+    follow (userId) {return instance.post(`follow/${userId}`)},
+    getProfile (userId) {return profileAPI.getProfile(userId)},
+    unfollow (userId) {return instance.delete(`follow/${userId}`)}, 
+    getUsers (currentPage, pageSize) {return instance.get(`users/?page=${currentPage}&count=${pageSize}`)}
 }
 
 export const profileAPI = {
-    getProfile (userId) {return instance.get(`profile/${userId}`).then(response => response.data)},
-    getStatus (userId) {return instance.get(`profile/status/${userId}`).then(response => response.data)},
-    updateStatus (status) {return instance.put(`profile/status`, {status: status}).then(response => response.data)}
+    getProfile (userId) {return instance.get(`profile/${userId}`)},
+    getStatus (userId) {return instance.get(`profile/status/${userId}`)},
+    updateStatus (status) {return instance.put(`profile/status`, {status: status})}
 }
 
 export const authAPI = {
-    auth () {return instance.get(`auth/me`).then(response => response.data)},
+    auth () {return instance.get(`auth/me`)},
     login (email, password, rememberMe = false) {
-        return instance.post(`auth/login`, {email, password, rememberMe}).then(response => response.data);
+        return instance.post(`auth/login`, {email, password, rememberMe});
     },
     logout (email, password, rememberMe = false) {
-        return instance.delete(`auth/login`).then(response => response.data);
+        return instance.delete(`auth/login`);
     },
 }

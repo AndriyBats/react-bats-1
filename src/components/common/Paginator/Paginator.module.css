@@ -1,0 +1,15 @@
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.selectedPage {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.pages{
+    font-size: 20px;
+    cursor: pointer;
+}
+

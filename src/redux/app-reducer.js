@@ -2,9 +2,7 @@ import {auth} from "./auth-reducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
-let initialState = {
-    initialized: false
-}
+let initialState = {initialized: false}
 
 const appReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -20,11 +18,9 @@ const appReducer = (state = initialState, action) => {
 
 export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
-export const initializeApp = () => (dispatch) => {
-    let promise =  dispatch(auth());
-    promise.then(() => {
-        dispatch(initializedSuccess());
-    })
+export const initializeApp = () => async (dispatch) => {
+    await dispatch(auth());
+    dispatch(initializedSuccess());
 }
 
 export default appReducer;

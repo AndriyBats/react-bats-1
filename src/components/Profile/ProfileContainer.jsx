@@ -1,10 +1,11 @@
 import React from 'react';
 import Profile from "./Profile";
+import {compose} from "redux";
 import {connect} from "react-redux";
 import {getStatus, getUserProfile, updateProfile, updateStatus} from "../../redux/profile-reducer";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/AuthRedirect";
-import {compose} from "redux";
+
 
 
 function withRouter(Component) {

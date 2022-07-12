@@ -1,13 +1,18 @@
 import React from 'react';
 import Post from './Post/Post';
 import mp from './MyPosts.module.css';
-import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../utils/validators/validators";
-import {Textarea} from "../../common/FormControls/FormControls";
+import { Field, reduxForm } from "redux-form";
+import { Textarea } from "../../common/FormControls/FormControls";
+import { maxLengthCreator, required } from "../../../utils/validators/validators";
 
-const MyPosts = (props) => {
-    let postElement = props.posts
-        .map(post => <Post value={post.id} message={post.message} key={post.id} likesCount={post.likesCount}/>);
+
+const MyPosts = React.memo((props) => {
+    let postElement = props.posts.map(post => <Post
+        key={post.id}
+        value={post.id}
+        message={post.message}
+        likesCount={post.likesCount}
+    />);
 
     let addNewPost = (values) => {
         props.addPost(values.newPostBody);
@@ -16,16 +21,16 @@ const MyPosts = (props) => {
     return (
         <div className={mp.postsBlocks}>
             My posts
-            <AddMessageFormRedux onSubmit={addNewPost}/>
+            <AddMessageFormRedux onSubmit={addNewPost} />
             <div className={mp.item}>
                 {postElement}
             </div>
         </div>
     )
-}
+});
 
-const AddNewPostForm = (props) =>{
-    return(
+const AddNewPostForm = (props) => {
+    return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field
@@ -40,6 +45,6 @@ const AddNewPostForm = (props) =>{
     )
 }
 
-const AddMessageFormRedux = reduxForm({form: 'profileAddPostForm'})(AddNewPostForm)
+const AddMessageFormRedux = reduxForm({ form: 'profileAddPostForm' })(AddNewPostForm)
 
 export default MyPosts;
